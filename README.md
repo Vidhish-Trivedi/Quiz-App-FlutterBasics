@@ -1,6 +1,5 @@
-# flutter_quiz
-
-A new Flutter project.
+# Quiz-App-FlutterBasics  
+This is an introductory project I made while learning Flutter and Dart.  
 
 ## Getting Started
 
