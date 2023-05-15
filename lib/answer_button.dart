@@ -17,14 +17,14 @@ class AnswerButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         padding: const EdgeInsets.symmetric(
-          horizontal: 40,
-          vertical: 10,
+          horizontal: 30,
+          vertical: 3,
         ),
       ),
       child: Text(
         choice,
         style: const TextStyle(
-          fontSize: 20,
+          fontSize: 16,
         ),
         textAlign: TextAlign.center,
       ),
