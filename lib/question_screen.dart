@@ -4,7 +4,8 @@ import 'package:flutter_quiz/data/questions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+  const QuestionScreen(this.onSelectChoice, {super.key});
+  final void Function(String choice) onSelectChoice;
 
   @override
   State<QuestionScreen> createState() {
@@ -15,9 +16,11 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentQuestionIndex = 0;
 
-  void answerQuestion() {
+  void answerQuestion(String choice) {
+    // Access the "widget" for which this state is being used.
+    widget.onSelectChoice(choice);
     setState(() {
-      currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+      currentQuestionIndex++;
     });
   }
 
@@ -47,7 +50,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
             ),
             ...currentQuestion.getShuffledChoices().map((e) {
               // map returns a list, children: List<Widget>, thus we need to "spread [...]" the list.
-              return AnswerButton(e, answerQuestion);
+              return AnswerButton(e, () {answerQuestion(e);});
+              // An anonymous function is used as we can not directly pass a function which takes a parameter.
             }),
           ],
         ),
