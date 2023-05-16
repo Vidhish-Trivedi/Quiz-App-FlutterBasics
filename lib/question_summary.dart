@@ -17,11 +17,18 @@ class QuestionSummary extends StatelessWidget {
             return Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(left: 10, right: 10, top: 7, bottom: 7),
+                  padding: const EdgeInsets.only(
+                      left: 10, right: 10, top: 7, bottom: 7),
                   decoration: BoxDecoration(
-                    border: Border.all(width: 10, color: data["selectedChoice"] == data["correctAnswer"] ? const Color.fromARGB(255, 236, 0, 255) : Colors.lightBlueAccent),
+                    border: Border.all(
+                        width: 10,
+                        color: data["selectedChoice"] == data["correctAnswer"]
+                            ? Colors.lightBlueAccent
+                            : const Color.fromARGB(255, 236, 0, 255)),
                     borderRadius: const BorderRadius.all(Radius.circular(100)),
-                    color: data["selectedChoice"] == data["correctAnswer"] ? const Color.fromARGB(255, 236, 0, 255) : Colors.lightBlueAccent,
+                    color: data["selectedChoice"] == data["correctAnswer"]
+                        ? Colors.lightBlueAccent
+                        : const Color.fromARGB(255, 236, 0, 255),
                   ),
                   child: Text(
                     ((data['index'] as int) + 1).toString(),
@@ -66,7 +73,9 @@ class QuestionSummary extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const SizedBox(height: 25,)
+                        const SizedBox(
+                          height: 25,
+                        )
                       ],
                     ),
                   ),
