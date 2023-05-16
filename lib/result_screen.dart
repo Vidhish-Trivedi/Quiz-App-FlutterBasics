@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz/data/questions.dart';
+import 'package:flutter_quiz/question_summary.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen(this.selectedChoices, {super.key});
@@ -23,6 +25,16 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final summaryData = getSummaryData();
+    final totalQuestions = questions.length;
+    // Filtering a list.
+    final userScore = summaryData
+        .where((data) {
+          return (data['selectedChoice'] == data['correctAnswer']);
+        })
+        .toList()
+        .length;
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -30,12 +42,19 @@ class ResultScreen extends StatelessWidget {
         child: (Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Results Heading"),
-            const SizedBox(
-              height: 30,
+            Text(
+              "Answered $userScore questions out of $totalQuestions correctly!",
+              style: GoogleFonts.lato(
+                color: const Color.fromARGB(255, 236, 40, 255),
+                fontSize: 24,
+                fontWeight: FontWeight.w800,
+              ),
+              textAlign: TextAlign.center,
             ),
-            // Create a scrollable list of questions here.
-            const Text("To do...."),
+            const SizedBox(
+              height: 25,
+            ),
+            QuestionSummary(summaryData),
             const SizedBox(
               height: 30,
             ),

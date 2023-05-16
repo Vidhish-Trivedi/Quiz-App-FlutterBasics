@@ -29,7 +29,6 @@ class _QuizState extends State<Quiz> {
     if (selectedChoices.length == questions.length) {
       // All questions have been answered.
       setState(() {
-        selectedChoices = [];
         activeScreen = "results-screen";
       });
     }
